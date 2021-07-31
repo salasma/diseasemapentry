@@ -1,0 +1,33 @@
+<h1>Current user: {{user.userID}}</h1>
+
+<h1> Current user data: </h1>
+
+<table>
+    <thead>
+        <th>userID</th>
+        <th>email</th>
+        <th>stateID</th>
+        <th>status</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{user.userID}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.stateID}}</td>
+            <td>{{user.diagnosisName}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<form id="updateUser" action="/users/:{{user.userID}}" method="post">
+    email: <input type="text" name="email" value="{user.email}}"><br>
+    stateID: <input type="text" name="stateID" value="{{user.stateID}}"><br>
+    diagnosis: <select name = "sicknessID">
+       {{#each diagnoses}}
+       <option value = "{{sicknessID}}"> {{diagnosisName}}</option>
+       {{/each}}
+       </select> <br>
+    Age: <input type="number" name="age" value="{{person.age}}"><br>
+</form>
+
+<button onclick = "updateUser({{user.userID}})"> Update </button>
